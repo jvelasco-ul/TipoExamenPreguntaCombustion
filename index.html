@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Solucionario Interactivo Paso a Paso - Combustión de GLP">
-    <title>Preparación Examen: Combustión de GLP | Procesos Industriales</title>
+    <meta name="description" content="Solucionario Interactivo Paso a Paso - Combustión de GLP (Sección 603)">
+    <title>Preparación Examen 2: Combustión de GLP | Procesos Industriales</title>
     <link rel="icon" href="assets/images/logo.png" type="image/png">
     
     <!-- Bootstrap 5 -->
@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- MathJax Configuration for perfect rendering -->
+    <!-- MathJax Configuration -->
     <script>
         window.MathJax = {
             tex: {
@@ -22,9 +22,7 @@
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
                 processEscapes: true
             },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-            }
+            options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -38,14 +36,12 @@
             --accent-green: #00cc66;
             --accent-purple: #9933ff;
         }
-        
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: #fff;
             min-height: 100vh;
         }
-        
         .main-header {
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(10px);
@@ -55,501 +51,475 @@
             top: 0;
             z-index: 1000;
         }
-        
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .navbar-brand img {
-            filter: drop-shadow(0 0 10px var(--secondary-color));
-        }
-        
+        .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .navbar-brand img { filter: drop-shadow(0 0 10px var(--secondary-color)); }
         .navbar-brand span {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 1.4rem;
+            font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.4rem;
             background: linear-gradient(45deg, var(--secondary-color), #ff9933);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
         .lab-title {
             font-family: 'Orbitron', sans-serif;
             background: linear-gradient(45deg, var(--secondary-color), #ff9933);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin: 2rem 0 0.5rem 0;
-            font-size: 1.8rem;
-            font-weight: 900;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-align: center; margin: 2rem 0 0.5rem 0; font-size: 1.8rem; font-weight: 900;
         }
-
         .progress-bar-custom {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            margin: 1.5rem 0 2.5rem 0;
-            overflow: hidden;
+            height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 3px;
+            margin: 1.5rem 0 2.5rem 0; overflow: hidden;
         }
-
         .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary-color), #ff9933);
-            width: 16.6%;
-            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%; background: linear-gradient(90deg, var(--secondary-color), #ff9933);
+            width: 8.33%; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .step-container {
-            display: none;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .step-container.active {
-            display: block;
-        }
-
+        .step-container { display: none; animation: fadeIn 0.6s ease-out; }
+        .step-container.active { display: block; }
         .info-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary-color);
+            background: var(--card-bg); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px;
+            padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary-color);
         }
-
-        .info-card h4 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
+        .info-card h4 { font-family: 'Orbitron', sans-serif; color: var(--secondary-color); margin-bottom: 1rem; font-size: 1.2rem; }
         .engineering-note {
-            background: rgba(153, 51, 255, 0.15);
-            border: 1px solid rgba(153, 51, 255, 0.3);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1rem;
-            font-size: 0.95rem;
+            background: rgba(153, 51, 255, 0.15); border: 1px solid rgba(153, 51, 255, 0.3);
+            border-radius: 8px; padding: 1rem; margin-top: 1rem; font-size: 0.95rem;
         }
-
-        .engineering-note i {
-            color: var(--accent-purple);
-        }
-
+        .engineering-note i { color: var(--accent-purple); }
         .quiz-option {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; cursor: pointer;
+            transition: all 0.2s; display: flex; align-items: center;
         }
-
-        .quiz-option:hover {
-            background: rgba(255, 102, 0, 0.1);
-            border-color: var(--secondary-color);
-        }
-
-        .quiz-option input[type="radio"] {
-            margin-right: 1rem;
-            accent-color: var(--secondary-color);
-            transform: scale(1.2);
-            cursor: pointer;
-        }
-
-        .quiz-option.selected {
-            background: rgba(255, 102, 0, 0.2);
-            border-color: var(--secondary-color);
-        }
-
+        .quiz-option:hover { background: rgba(255, 102, 0, 0.1); border-color: var(--secondary-color); }
+        .quiz-option input[type="radio"] { margin-right: 1rem; accent-color: var(--secondary-color); transform: scale(1.2); cursor: pointer; }
+        .quiz-option.selected { background: rgba(255, 102, 0, 0.2); border-color: var(--secondary-color); }
         .btn-action {
-            background: linear-gradient(135deg, var(--secondary-color), #ff9933);
-            border: none;
-            font-weight: 700;
-            padding: 0.75rem 1.5rem;
-            transition: all 0.3s;
-            color: #fff;
-            border-radius: 8px;
+            background: linear-gradient(135deg, var(--secondary-color), #ff9933); border: none;
+            font-weight: 700; padding: 0.75rem 1.5rem; transition: all 0.3s; color: #fff; border-radius: 8px;
         }
-
-        .btn-action:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 102, 0, 0.4);
-            color: #fff;
-        }
-
-        .btn-action:disabled {
-            background: #444;
-            color: #888;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
+        .btn-action:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255, 102, 0, 0.4); color: #fff; }
+        .btn-action:disabled { background: #444; color: #888; cursor: not-allowed; transform: none; box-shadow: none; }
         .btn-back {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #ccc;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s;
+            background: transparent; border: 1px solid rgba(255, 255, 255, 0.3); color: #ccc;
+            font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 8px; transition: all 0.3s;
         }
-
-        .btn-back:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border-color: #fff;
-        }
-
+        .btn-back:hover { background: rgba(255, 255, 255, 0.1); color: #fff; border-color: #fff; }
         .solution-box {
-            background: rgba(0, 204, 102, 0.08);
-            border-left: 4px solid var(--accent-green);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            display: none;
+            background: rgba(0, 204, 102, 0.08); border-left: 4px solid var(--accent-green);
+            padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; display: none;
         }
-
-        .solution-box.show {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        .feedback-msg {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 8px;
-            display: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .feedback-msg.success {
-            background: rgba(0, 204, 102, 0.15);
-            color: #00ff88;
-            border: 1px solid var(--accent-green);
-        }
-
-        .feedback-msg.error {
-            background: rgba(204, 51, 0, 0.15);
-            color: #ff6666;
-            border: 1px solid #cc3300;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            border-top: 3px solid var(--secondary-color);
-            margin-top: 4rem;
-            padding: 2rem 0;
-        }
-
-        .footer-logo {
-            filter: drop-shadow(0 0 10px var(--secondary-color));
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        .solution-box.show { display: block; animation: fadeIn 0.5s; }
+        .feedback-msg { margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none; font-weight: 600; font-size: 0.95rem; }
+        .feedback-msg.success { background: rgba(0, 204, 102, 0.15); color: #00ff88; border: 1px solid var(--accent-green); }
+        .feedback-msg.error { background: rgba(204, 51, 0, 0.15); color: #ff6666; border: 1px solid #cc3300; }
+        footer { background: rgba(0, 0, 0, 0.9); border-top: 3px solid var(--secondary-color); margin-top: 4rem; padding: 2rem 0; }
+        .footer-logo { filter: drop-shadow(0 0 10px var(--secondary-color)); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) {
             .lab-title { font-size: 1.4rem; }
             .info-card { padding: 1.2rem; }
             .btn-action, .btn-back { width: 100%; margin-bottom: 0.5rem; }
         }
+        /* Tabla estilo examen */
+        .exam-table { width: 100%; color: #fff; border-collapse: collapse; font-size: 0.9rem; }
+        .exam-table th, .exam-table td { border: 1px solid rgba(255,255,255,0.2); padding: 8px; text-align: center; }
+        .exam-table th { background: rgba(255, 102, 0, 0.2); font-family: 'Orbitron', sans-serif; }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="main-header">
         <div class="container">
             <a class="navbar-brand" href="#" aria-label="Inicio">
-                <!-- Reemplaza con tu logo real en assets/images/logo.png -->
                 <img src="assets/images/logo.png" alt="Logo" height="50" class="footer-logo" onerror="this.src='https://via.placeholder.com/50x50/ff6600/ffffff?text=LOGO'">
-                <span>PROCESOS INDUSTRIALES</span>
+                <span>PROCESOS INDUSTRIALES - SEC 603</span>
             </a>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main id="main-content">
         <div class="container py-4">
-            <h1 class="lab-title">
-                <i class="fas fa-fire me-3"></i>COMBUSTIÓN DE GLP (Propano + Butano)
-            </h1>
-            <p class="text-center text-white mb-2">Guía interactiva de balances de materia y energía (Problema 2.1)</p>
+            <h1 class="lab-title"><i class="fas fa-fire me-3"></i>PROBLEMA 2: COMBUSTIÓN DE GLP</h1>
+            <p class="text-center text-white mb-2">Guía interactiva paso a paso (Examen Escrito Nº 2)</p>
 
-            <!-- Progress Bar -->
             <div class="progress-bar-custom">
-                <div class="progress-fill" id="progressBar" style="width: 16.6%;"></div>
+                <div class="progress-fill" id="progressBar" style="width: 8.33%;"></div>
             </div>
 
-            <!-- PASO 1: Datos y Reacciones -->
+            <!-- PASO 1: Datos y Tabla Termodinámica -->
             <div class="step-container active" id="step1">
                 <div class="info-card">
-                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 1 de 6</span>
-                    <h4><i class="fas fa-vial me-2"></i>Datos de Alimentación y Reacciones</h4>
-                    <p>Se quema GLP con un flujo de <strong>80 kmol/h</strong>, compuesto por <strong>60% molar de Propano (C₃H₈) y 40% molar de Butano (C₄H₁₀)</strong>. El combustible ingresa a 25 °C.</p>
-                    <ul class="list-unstyled mt-3">
-                        <li><i class="fas fa-check text-success me-2"></i>Flujo de C₃H₈ = 0.60 × 80 = <strong>48 kmol/h</strong></li>
-                <li><i class="fas fa-check text-success me-2"></i>Flujo de C₄H₁₀ = 0.40 × 80 = <strong>32 kmol/h</strong></li>
-                    </ul>
-                    <p class="mt-3"><strong>Reacciones de combustión completa:</strong></p>
-                    <p>$$C_3H_8 + 5O_2 \rightarrow 3CO_2 + 4H_2O$$</p>
-                    <p>$$C_4H_{10} + 6.5O_2 \rightarrow 4CO_2 + 5H_2O$$</p>
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 1 de 12</span>
+                    <h4><i class="fas fa-table me-2"></i>Datos y Propiedades Termodinámicas</h4>
+                    <p>Se quema GLP con un flujo de <strong>80 kmol/h</strong>: <strong>60% C₃H₈ y 40% C₄H₁₀</strong> a 25 °C. Exceso de aire: 20%. Aire a 25 °C, 1 atm, 60% HR. Humos a 180 °C.</p>
+                    <table class="exam-table mt-3">
+                        <thead>
+                            <tr><th>Sustancia</th><th>ΔH a 25°C (kJ/mol)</th><th>ΔH a 180°C (kJ/mol)</th><th>ΔHc (kJ/mol)</th><th>Teb (°C)</th><th>λ (kJ/mol)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>C₃H₈</td><td>0.00</td><td>8.50</td><td>-2220.0</td><td>-42.1</td><td>15.70</td></tr>
+                            <tr><td>C₄H₁₀</td><td>0.00</td><td>11.20</td><td>-2877.0</td><td>-0.5</td><td>21.00</td></tr>
+                            <tr><td>O₂</td><td>0.00</td><td>4.80</td><td>—</td><td>-183.0</td><td>6.82</td></tr>
+                            <tr><td>N₂</td><td>0.00</td><td>4.70</td><td>—</td><td>-195.8</td><td>5.57</td></tr>
+                            <tr><td>CO₂</td><td>0.00</td><td>6.90</td><td>—</td><td>-78.5</td><td>15.30</td></tr>
+                            <tr><td>H₂O (g)</td><td>0.00</td><td>6.40</td><td>—</td><td>100.0</td><td>40.65</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-2 small text-muted">*Pv del agua a 25 °C = 3.17 kPa</p>
                 </div>
-
                 <div class="info-card" style="border-left-color: var(--secondary-color);">
                     <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación de Concepto</h5>
                     <div class="mb-4">
-                        <p class="mb-2">1. ¿Cuál es el flujo molar de Oxígeno <strong>teórico</strong> requerido únicamente para el Propano (C₃H₈)?</p>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q1_1" value="opt1"> 144 kmol/h (confunde con moles de CO₂ producidos)</label>
-                        <label class="quiz-option" data-correct="true"><input type="radio" name="q1_1" value="opt2"> 240 kmol/h (48 kmol/h C₃H₈ × 5)</label>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q1_1" value="opt3"> 400 kmol/h (aplica el coeficiente 5 al flujo total de 80 kmol/h)</label>
+                        <p class="mb-2">1. ¿Cuáles son los flujos molares individuales de alimentación del combustible?</p>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q1_1" value="opt1"> 40 kmol/h de C₃H₈ y 40 kmol/h de C₄H₁₀</label>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q1_1" value="opt2"> 48 kmol/h de C₃H₈ y 32 kmol/h de C₄H₁₀</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q1_1" value="opt3"> 60 kmol/h de C₃H₈ y 20 kmol/h de C₄H₁₀</label>
                     </div>
-
                     <div id="feedback1" class="feedback-msg"></div>
-                    
                     <div class="d-flex gap-3 mt-3 flex-wrap">
-                        <button class="btn btn-action" id="checkBtn1" onclick="checkStep(1)">
-                            <i class="fas fa-check-circle me-2"></i>Verificar Respuesta
-                        </button>
-                        <button class="btn btn-action d-none" id="next1" onclick="nextStep(2)" style="background: linear-gradient(135deg, #00cc66, #009955);">
-                            Siguiente Paso <i class="fas fa-arrow-right ms-2"></i>
-                        </button>
+                        <button class="btn btn-action" id="checkBtn1" onclick="checkStep(1)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next1" onclick="nextStep(2)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
                     </div>
                 </div>
-
                 <div class="solution-box" id="solution1">
-                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución del Paso 1</h5>
-                    <p>La estequiometría de la reacción del propano indica que se necesitan 5 moles de $O_2$ por cada mol de $C_3H_8$.</p>
-                    $$O_{2, C3H8} = n_{C3H8} \times 5 = 48 \text{ kmol/h} \times 5 = 240 \text{ kmol } O_2\text{/h}$$
-                    <div class="engineering-note">
-                        <i class="fas fa-lightbulb me-2"></i><strong>Nota de Ingeniería:</strong> Es un error común multiplicar el coeficiente estequiométrico por el flujo <em>total</em> de la mezcla (80 kmol/h) en lugar del flujo del componente específico. Siempre separa los componentes primero.
-                    </div>
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$n_{C3H8} = 80 \text{ kmol/h} \times 0.60 = 48 \text{ kmol/h}$$</p>
+                    <p>$$n_{C4H10} = 80 \text{ kmol/h} \times 0.40 = 32 \text{ kmol/h}$$</p>
                 </div>
             </div>
 
-            <!-- PASO 2: Cálculo del Aire -->
+            <!-- PASO 2: Oxígeno Teórico -->
             <div class="step-container" id="step2">
                 <div class="info-card">
-                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 2 de 6</span>
-                    <h4><i class="fas fa-wind me-2"></i>Cálculo del Aire Alimentado</h4>
-                    <p>Se utiliza un <strong>20% de exceso de aire</strong>. El aire atmosférico ingresa a 25 °C, 1 atm y <strong>60% de humedad relativa</strong>. Presión de vapor de agua a 25 °C = 3.17 kPa.</p>
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 2 de 12</span>
+                    <h4><i class="fas fa-flask me-2"></i>Estequiometría y Oxígeno Teórico</h4>
+                    <p>Reacciones: $C_3H_8 + 5O_2 \rightarrow 3CO_2 + 4H_2O$  y  $C_4H_{10} + 6.5O_2 \rightarrow 4CO_2 + 5H_2O$</p>
                 </div>
-
                 <div class="info-card" style="border-left-color: var(--secondary-color);">
-                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación de Concepto</h5>
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
                     <div class="mb-4">
-                        <p class="mb-2">1. Para calcular el volumen de aire alimentado ($m^3/h$) usando la ley de los gases ideales, ¿qué flujo molar debes utilizar?</p>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q2_1" value="opt1"> Solo los moles de aire seco, porque el agua es un "impureza" despreciable.</label>
-                        <label class="quiz-option" data-correct="true"><input type="radio" name="q2_1" value="opt2"> La suma de los moles de aire seco MÁS los moles de vapor de agua arrastrados (aire húmedo total).</label>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q2_1" value="opt3"> Los moles de oxígeno teórico multiplicados por 4.76.</label>
+                        <p class="mb-2">1. ¿Cuál es el flujo total de O₂ teórico requerido?</p>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q2_1" value="opt1"> 400 kmol/h (Aplica el coeficiente 5 al flujo total de 80)</label>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q2_1" value="opt2"> 448 kmol/h (Suma de los O₂ teóricos de cada componente)</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q2_1" value="opt3"> 520 kmol/h (Incluye ya el 20% de exceso en el cálculo teórico)</label>
                     </div>
-
                     <div id="feedback2" class="feedback-msg"></div>
-                    
                     <div class="d-flex gap-3 mt-3 flex-wrap">
                         <button class="btn btn-back" onclick="prevStep(1)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
-                        <button class="btn btn-action" id="checkBtn2" onclick="checkStep(2)"><i class="fas fa-check-circle me-2"></i>Verificar Respuesta</button>
-                        <button class="btn btn-action d-none" id="next2" onclick="nextStep(3)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente Paso <i class="fas fa-arrow-right ms-2"></i></button>
+                        <button class="btn btn-action" id="checkBtn2" onclick="checkStep(2)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next2" onclick="nextStep(3)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
                     </div>
                 </div>
-
                 <div class="solution-box" id="solution2">
-                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución del Paso 2</h5>
-                    <p><strong>1. Oxígeno total teórico:</strong> $240 \text{ (propano)} + (32 \times 6.5) \text{ (butano)} = 448 \text{ kmol } O_2\text{/h}$</p>
-                    <p><strong>2. Aire seco real (con 20% exceso):</strong></p>
-                    $$Aire_{seco} = \frac{448}{0.21} \times 1.20 = 2560 \text{ kmol/h}$$
-                    <p><strong>3. Humedad del aire:</strong></p>
-                    $$P_v = 0.60 \times 3.17 = 1.902 \text{ kPa}$$
-                    $$Y = \frac{1.902}{101.325 - 1.902} = 0.01915 \text{ mol } H_2O / \text{mol aire seco}$$
-                    $$n_{H2O} = 2560 \times 0.01915 = 49.02 \text{ kmol/h}$$
-                    <p><strong>4. Volumen total (Ley de Gases Ideales):</strong></p>
-                    $$V = \frac{n_{total} R T}{P} = \frac{(2560 + 49.02) \times 0.08206 \times 298.15}{1} = \mathbf{63,824 \text{ } m^3/h}$$
-                    <div class="engineering-note">
-                        <i class="fas fa-exclamation-triangle me-2"></i><strong>¡Cuidado!</strong> Usar solo los 2560 kmol/h de aire seco subestimaría el volumen real en aproximadamente 1,200 $m^3/h$, lo que afectaría el dimensionamiento de los ductos y ventiladores.
-                    </div>
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$O_{2,teo} = (48 \times 5) + (32 \times 6.5) = 240 + 208 = 448 \text{ kmol/h}$$</p>
+                    <div class="engineering-note"><i class="fas fa-lightbulb me-2"></i>El error más común es multiplicar el coeficiente estequiométrico por el flujo total de la mezcla en lugar del flujo del componente específico.</div>
                 </div>
             </div>
 
-            <!-- PASO 3: Composición de Humos -->
+            <!-- PASO 3: Aire Seco Real -->
             <div class="step-container" id="step3">
                 <div class="info-card">
-                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 3 de 6</span>
-                    <h4><i class="fas fa-smog me-2"></i>Composición de los Humos</h4>
-                    <p>Tras la combustión, los productos son $CO_2$, $H_2O$, $O_2$ (en exceso) y $N_2$ (del aire).</p>
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 3 de 12</span>
+                    <h4><i class="fas fa-wind me-2"></i>Cálculo del Aire Seco Real</h4>
+                    <p>Se utiliza un 20% de exceso de aire. El aire contiene 21% de O₂ y 79% de N₂ en volumen.</p>
                 </div>
-
                 <div class="info-card" style="border-left-color: var(--secondary-color);">
-                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación de Concepto</h5>
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
                     <div class="mb-4">
-                        <p class="mb-2">1. Al calcular la composición de los humos en <strong>base seca</strong>, ¿qué componente debe ser EXCLUIDO del denominador (moles totales)?</p>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q3_1" value="opt1"> El Nitrógeno ($N_2$), porque es un gas inerte.</label>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q3_1" value="opt2"> El Oxígeno ($O_2$), porque no se consumió totalmente.</label>
-                        <label class="quiz-option" data-correct="true"><input type="radio" name="q3_1" value="opt3"> El Agua ($H_2O$), porque "base seca" implica analizar la mezcla como si toda el agua hubiera sido condensada y removida.</label>
+                        <p class="mb-2">1. ¿Cuál es el flujo molar de aire SECO real alimentado?</p>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q3_1" value="opt1"> 2133.3 kmol/h (Este es el aire teórico, sin exceso)</label>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q3_1" value="opt2"> 2560 kmol/h (Aire teórico × 1.20)</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q3_1" value="opt3"> 537.6 kmol/h (Solo calcula el O₂ en exceso)</label>
                     </div>
-
                     <div id="feedback3" class="feedback-msg"></div>
                     <div class="d-flex gap-3 mt-3 flex-wrap">
                         <button class="btn btn-back" onclick="prevStep(2)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
-                        <button class="btn btn-action" id="checkBtn3" onclick="checkStep(3)"><i class="fas fa-check-circle me-2"></i>Verificar Respuesta</button>
-                        <button class="btn btn-action d-none" id="next3" onclick="nextStep(4)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente Paso <i class="fas fa-arrow-right ms-2"></i></button>
+                        <button class="btn btn-action" id="checkBtn3" onclick="checkStep(3)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next3" onclick="nextStep(4)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
                     </div>
                 </div>
-
                 <div class="solution-box" id="solution3">
-                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución del Paso 3</h5>
-                    <p><strong>Moles de productos:</strong></p>
-                    <ul>
-                        <li>$CO_2 = (48 \times 3) + (32 \times 4) = 144 + 128 = 272 \text{ kmol/h}$</li>
-                        <li>$O_2 \text{ (exceso)} = 448 \times 0.20 = 89.6 \text{ kmol/h}$</li>
-                        <li>$N_2 = 2560 \times 0.79 = 2022.4 \text{ kmol/h}$</li>
-                    </ul>
-                    <p><strong>Total de humos secos:</strong> $272 + 89.6 + 2022.4 = 2384 \text{ kmol/h}$</p>
-                    <p><strong>Composición (% mol base seca):</strong></p>
-                    <p>$$ \% CO_2 = \frac{272}{2384} \times 100 = 11.41\% $$</p>
-                    <p>$$ \% O_2 = \frac{89.6}{2384} \times 100 = 3.76\% $$</p>
-                    <p>$$ \% N_2 = \frac{2022.4}{2384} \times 100 = 84.83\% $$</p>
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$Aire_{teo} = \frac{448}{0.21} = 2133.33 \text{ kmol/h}$$</p>
+                    <p>$$Aire_{seco,real} = 2133.33 \times 1.20 = 2560 \text{ kmol/h}$$</p>
                 </div>
             </div>
 
-            <!-- PASO 4: Humedad de salida -->
+            <!-- PASO 4: Humedad del Aire -->
             <div class="step-container" id="step4">
                 <div class="info-card">
-                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 4 de 6</span>
-                    <h4><i class="fas fa-tint me-2"></i>Humedad de los Gases de Salida</h4>
-                    <p>El agua total en los humos incluye la producida por la combustión MÁS la que ya venía en el aire atmosférico.</p>
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 4 de 12</span>
+                    <h4><i class="fas fa-tint me-2"></i>Humedad del Aire de Entrada</h4>
+                    <p>Aire a 25 °C, 1 atm (101.325 kPa), 60% HR. Pv,sat(25°C) = 3.17 kPa.</p>
                 </div>
-
                 <div class="info-card" style="border-left-color: var(--secondary-color);">
-                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación de Concepto</h5>
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
                     <div class="mb-4">
-                        <p class="mb-2">1. ¿Cuál es la fórmula correcta para la "humedad de los gases de salida en base seca"?</p>
-                        <label class="quiz-option" data-correct="true"><input type="radio" name="q4_1" value="opt1"> $\frac{\text{moles de } H_2O \text{ total}}{\text{moles de humos secos}}$</label>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q4_1" value="opt2"> $\frac{\text{moles de } H_2O \text{ total}}{\text{moles de humos totales (húmedos)}}$</label>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q4_1" value="opt3"> $\frac{\text{moles de } H_2O \text{ del aire}}{\text{moles de aire seco}}$</label>
+                        <p class="mb-2">1. ¿Cuántos kmol/h de agua (H₂O) ingresa arrastrados por el aire húmedo?</p>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q4_1" value="opt1"> 30.5 kmol/h (Usa la presión total en lugar de la presión parcial del aire seco en el denominador)</label>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q4_1" value="opt2"> 49.02 kmol/h</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q4_1" value="opt3"> 1.90 kmol/h (Confunde la presión parcial de vapor con los moles de vapor)</label>
                     </div>
-
                     <div id="feedback4" class="feedback-msg"></div>
                     <div class="d-flex gap-3 mt-3 flex-wrap">
                         <button class="btn btn-back" onclick="prevStep(3)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
-                        <button class="btn btn-action" id="checkBtn4" onclick="checkStep(4)"><i class="fas fa-check-circle me-2"></i>Verificar Respuesta</button>
-                        <button class="btn btn-action d-none" id="next4" onclick="nextStep(5)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente Paso <i class="fas fa-arrow-right ms-2"></i></button>
+                        <button class="btn btn-action" id="checkBtn4" onclick="checkStep(4)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next4" onclick="nextStep(5)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
                     </div>
                 </div>
-
                 <div class="solution-box" id="solution4">
-                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución del Paso 4</h5>
-                    <p><strong>Agua de combustión:</strong> $(48 \times 4) + (32 \times 5) = 192 + 160 = 352 \text{ kmol/h}$</p>
-                    <p><strong>Agua del aire:</strong> $49.02 \text{ kmol/h}$</p>
-                    <p><strong>Agua total:</strong> $352 + 49.02 = 401.02 \text{ kmol/h}$</p>
-                    <p><strong>Humedad en base seca:</strong></p>
-                    $$ \text{Humedad} = \frac{401.02}{2384} = \mathbf{0.1682 \text{ mol } H_2O / \text{mol humo seco}} $$
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$P_v = 0.60 \times 3.17 = 1.902 \text{ kPa}$$</p>
+                    <p>$$Y = \frac{P_v}{P_{total} - P_v} = \frac{1.902}{101.325 - 1.902} = 0.01915 \frac{\text{mol H}_2\text{O}}{\text{mol aire seco}}$$</p>
+                    <p>$$n_{H2O,aire} = 2560 \times 0.01915 = 49.02 \text{ kmol/h}$$</p>
                 </div>
             </div>
 
-            <!-- PASO 5: Calor Sensible -->
+            <!-- PASO 5: Volumen de Aire -->
             <div class="step-container" id="step5">
                 <div class="info-card">
-                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 5 de 6</span>
-                    <h4><i class="fas fa-thermometer-half me-2"></i>Calor Sensible de los Humos</h4>
-                    <p>Los humos salen a <strong>180 °C</strong>. Debemos calcular la entalpía sensible de cada componente desde la temperatura de referencia (25 °C).</p>
-                    <!-- Placeholder para imagen del diagrama -->
-                    <div class="text-center my-3">
-                        <img src="assets/images/diagrama_combustion.png" alt="Diagrama de Cámara de Combustión mostrando entradas a 25°C y salidas a 180°C" class="img-fluid rounded border border-secondary" style="max-height: 200px; background: rgba(255,255,255,0.1);" onerror="this.src='https://via.placeholder.com/600x200/1a1a2e/ff6600?text=DIAGRAMA:+Entradas+a+25%C2%B0C+->+Camara+->+Salidas+a+180%C2%B0C'">
-                        <p class="small text-muted mt-1"><em>Fig 1. Esquema del balance de energía. (Reemplazar con diagrama_real.png)</em></p>
-                    </div>
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 5 de 12</span>
+                    <h4><i class="fas fa-compress-arrows-alt me-2"></i>Volumen de Aire Alimentado</h4>
                 </div>
-
                 <div class="info-card" style="border-left-color: var(--secondary-color);">
-                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación de Concepto</h5>
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
                     <div class="mb-4">
-                        <p class="mb-2">1. ¿Por qué el cálculo del calor sensible del agua ($H_2O$) NO puede hacerse con un solo término $n \cdot C_p \cdot \Delta T$ desde 25°C hasta 180°C?</p>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q5_1" value="opt1"> Porque el agua no está presente en los humos a esa temperatura.</label>
-                        <label class="quiz-option" data-correct="true"><input type="radio" name="q5_1" value="opt2"> Porque el agua sufre un cambio de fase (vaporización) a 100°C, requiriendo sumar el calor latente ($\lambda$) además de los calores sensibles del líquido y del vapor.</label>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q5_1" value="opt3"> Porque la fórmula $n \cdot C_p \cdot \Delta T$ solo es válida para gases ideales, y el agua es un líquido.</label>
+                        <p class="mb-2">1. Para calcular el volumen real de aire alimentado (m³/h) a 25°C, ¿qué flujo molar se debe usar en $PV=nRT$?</p>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q5_1" value="opt1"> La suma del aire seco (2560) + el agua arrastrada (49.02) = 2609.02 kmol/h</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q5_1" value="opt2"> Solo el aire seco (2560 kmol/h), porque el agua es una impureza despreciable.</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q5_1" value="opt3"> El flujo de oxígeno teórico (448 kmol/h).</label>
                     </div>
-
                     <div id="feedback5" class="feedback-msg"></div>
                     <div class="d-flex gap-3 mt-3 flex-wrap">
                         <button class="btn btn-back" onclick="prevStep(4)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
-                        <button class="btn btn-action" id="checkBtn5" onclick="checkStep(5)"><i class="fas fa-check-circle me-2"></i>Verificar Respuesta</button>
-                        <button class="btn btn-action d-none" id="next5" onclick="nextStep(6)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente Paso <i class="fas fa-arrow-right ms-2"></i></button>
+                        <button class="btn btn-action" id="checkBtn5" onclick="checkStep(5)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next5" onclick="nextStep(6)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
                     </div>
                 </div>
-
                 <div class="solution-box" id="solution5">
-                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución del Paso 5</h5>
-                    <p>Para el agua (401.02 kmol/h), el camino termodinámico desde 25°C hasta 180°C tiene 3 etapas:</p>
-                    <ol>
-                        <li><strong>Calentar líquido (25°C a 100°C):</strong> $401.02 \times 5.65 = 2,265.76 \text{ MJ/h}$</li>
-                        <li><strong>Vaporización a 100°C:</strong> $401.02 \times 40.65 = 16,301.46 \text{ MJ/h}$</li>
-                        <li><strong>Calentar vapor (100°C a 180°C):</strong> $401.02 \times 2.69 = 1,078.74 \text{ MJ/h}$</li>
-                    </ol>
-                    <p><strong>Calor total del agua:</strong> $2,265.76 + 16,301.46 + 1,078.74 = 19,645.96 \text{ MJ/h}$</p>
-                    <p>Sumando los gases secos ($CO_2, O_2, N_2$) usando sus $\Delta H$ a 180°C de la tabla:</p>
-                    $$Q_{humos} = 1,876.8 + 430.08 + 9,505.28 + 19,645.96 = \mathbf{31,458.12 \text{ MJ/h}}$$
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$n_{total} = 2560 + 49.02 = 2609.02 \text{ kmol/h}$$</p>
+                    <p>$$V = \frac{nRT}{P} = \frac{2609.02 \times 0.08206 \times 298.15}{1} = 63,824 \text{ m}^3\text{/h}$$</p>
                 </div>
             </div>
 
-            <!-- PASO 6: Calor de Reacción y Balance Final -->
+            <!-- PASO 6: Balance de Materia (Productos) -->
             <div class="step-container" id="step6">
                 <div class="info-card">
-                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 6 de 6</span>
-                    <h4><i class="fas fa-bolt me-2"></i>Calor de Reacción y Balance Global</h4>
-                    <p>El agua en los humos sale como <strong>vapor</strong> a 180°C. Por lo tanto, la energía liberada por la combustión corresponde al <strong>Poder Calorífico Inferior (PCI)</strong>.</p>
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 6 de 12</span>
+                    <h4><i class="fas fa-balance-scale me-2"></i>Balance de Materia: Productos</h4>
                 </div>
-
                 <div class="info-card" style="border-left-color: var(--secondary-color);">
-                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación Final</h5>
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
                     <div class="mb-4">
-                        <p class="mb-2">1. Si usáramos el Poder Calorífico Superior (PCS) en lugar del PCI para calcular el calor de reacción, ¿qué error estaríamos cometiendo?</p>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q6_1" value="opt1"> Subestimaríamos el calor liberado, porque el PCS es un valor menor.</label>
-                        <label class="quiz-option" data-correct="true"><input type="radio" name="q6_1" value="opt2"> Sobreestimaríamos el calor útil, porque el PCS asume que el agua se condensa y libera su calor latente, lo cual NO sucede en la chimenea a 180°C.</label>
-                        <label class="quiz-option" data-correct="false"><input type="radio" name="q6_1" value="opt3"> No habría ningún error, PCS y PCI son intercambiables en combustión gaseosa.</label>
+                        <p class="mb-2">1. ¿Cuál es el flujo total de CO₂ producido en la combustión?</p>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q6_1" value="opt1"> 144 kmol/h (Solo cuenta el del propano)</label>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q6_1" value="opt2"> 272 kmol/h (Suma de 144 del propano + 128 del butano)</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q6_1" value="opt3"> 352 kmol/h (Confunde los moles de CO₂ con los moles de H₂O producidos)</label>
                     </div>
-
                     <div id="feedback6" class="feedback-msg"></div>
                     <div class="d-flex gap-3 mt-3 flex-wrap">
                         <button class="btn btn-back" onclick="prevStep(5)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
-                        <button class="btn btn-action" id="checkBtn6" onclick="checkStep(6)"><i class="fas fa-check-circle me-2"></i>Verificar Respuesta</button>
+                        <button class="btn btn-action" id="checkBtn6" onclick="checkStep(6)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next6" onclick="nextStep(7)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
+                <div class="solution-box" id="solution6">
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$CO_2 = (48 \times 3) + (32 \times 4) = 144 + 128 = 272 \text{ kmol/h}$$</p>
+                    <p>$$O_2 (\text{exceso}) = 448 \times 0.20 = 89.6 \text{ kmol/h}$$</p>
+                    <p>$$N_2 = 2560 \times 0.79 = 2022.4 \text{ kmol/h}$$</p>
+                    <p>$$H_2O (\text{total}) = (48 \times 4) + (32 \times 5) + 49.02 = 192 + 160 + 49.02 = 401.02 \text{ kmol/h}$$</p>
+                </div>
+            </div>
+
+            <!-- PASO 7: Composición Base Seca -->
+            <div class="step-container" id="step7">
+                <div class="info-card">
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 7 de 12</span>
+                    <h4><i class="fas fa-percentage me-2"></i>Composición de Humos en Base Seca</h4>
+                </div>
+                <div class="info-card" style="border-left-color: var(--secondary-color);">
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
+                    <div class="mb-4">
+                        <p class="mb-2">1. Al calcular el % mol en base seca, ¿cuál es el denominador correcto (moles totales de referencia)?</p>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q7_1" value="opt1"> 2785.02 kmol/h (Incluye el agua, lo cual sería base húmeda)</label>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q7_1" value="opt2"> 2384 kmol/h (Suma de CO₂ + O₂ + N₂, excluyendo el H₂O)</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q7_1" value="opt3"> 2560 kmol/h (Usa el flujo de aire seco como denominador)</label>
+                    </div>
+                    <div id="feedback7" class="feedback-msg"></div>
+                    <div class="d-flex gap-3 mt-3 flex-wrap">
+                        <button class="btn btn-back" onclick="prevStep(6)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
+                        <button class="btn btn-action" id="checkBtn7" onclick="checkStep(7)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next7" onclick="nextStep(8)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
+                <div class="solution-box" id="solution7">
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$n_{secos} = 272 (CO_2) + 89.6 (O_2) + 2022.4 (N_2) = 2384 \text{ kmol/h}$$</p>
+                    <p>$$\%CO_2 = \frac{272}{2384} \times 100 = 11.41\%$$</p>
+                    <p>$$\%O_2 = \frac{89.6}{2384} \times 100 = 3.76\%$$</p>
+                    <p>$$\%N_2 = \frac{2022.4}{2384} \times 100 = 84.83\%$$</p>
+                </div>
+            </div>
+
+            <!-- PASO 8: Humedad de Salida -->
+            <div class="step-container" id="step8">
+                <div class="info-card">
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 8 de 12</span>
+                    <h4><i class="fas fa-tint me-2"></i>Humedad de Gases de Salida</h4>
+                </div>
+                <div class="info-card" style="border-left-color: var(--secondary-color);">
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
+                    <div class="mb-4">
+                        <p class="mb-2">1. La humedad de los gases de salida en base seca es:</p>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q8_1" value="opt1"> 0.1682 mol H₂O / mol humo seco</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q8_1" value="opt2"> 0.1440 mol H₂O / mol humo seco (Olvida sumar el agua que venía en el aire)</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q8_1" value="opt3"> 0.1255 mol H₂O / mol humo húmedo (Divide entre el total húmedo en lugar del seco)</label>
+                    </div>
+                    <div id="feedback8" class="feedback-msg"></div>
+                    <div class="d-flex gap-3 mt-3 flex-wrap">
+                        <button class="btn btn-back" onclick="prevStep(7)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
+                        <button class="btn btn-action" id="checkBtn8" onclick="checkStep(8)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next8" onclick="nextStep(9)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
+                <div class="solution-box" id="solution8">
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$Humedad = \frac{n_{H2O,total}}{n_{humos,secos}} = \frac{401.02}{2384} = 0.1682 \frac{\text{mol H}_2\text{O}}{\text{mol seco}}$$</p>
+                </div>
+            </div>
+
+            <!-- PASO 9: Calor Sensible -->
+            <div class="step-container" id="step9">
+                <div class="info-card">
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 9 de 12</span>
+                    <h4><i class="fas fa-thermometer-half me-2"></i>Calor Sensible de los Humos (180 °C)</h4>
+                    <div class="text-center my-3">
+                        <img src="assets/images/diagrama_combustion.png" alt="Diagrama de Balance de Energía" class="img-fluid rounded border border-secondary" style="max-height: 180px; background: rgba(255,255,255,0.1);" onerror="this.src='https://via.placeholder.com/600x180/1a1a2e/ff6600?text=DIAGRAMA:+Agua:+25%C2%B0C(l)+->+100%C2%B0C(vap)+->+180%C2%B0C(vap)'">
+                    </div>
+                </div>
+                <div class="info-card" style="border-left-color: var(--secondary-color);">
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
+                    <div class="mb-4">
+                        <p class="mb-2">1. ¿Por qué el cálculo del calor sensible del agua NO puede ser un simple $n \cdot C_p \cdot \Delta T$ desde 25°C hasta 180°C?</p>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q9_1" value="opt1"> Porque el agua sufre un cambio de fase a 100°C, requiriendo sumar el calor latente ($\lambda$) además de los calores sensibles del líquido y del vapor.</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q9_1" value="opt2"> Porque el agua no está presente en los humos a esa temperatura.</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q9_1" value="opt3"> Porque la fórmula $n \cdot C_p \cdot \Delta T$ solo es válida para gases ideales, y el agua es un líquido.</label>
+                    </div>
+                    <div id="feedback9" class="feedback-msg"></div>
+                    <div class="d-flex gap-3 mt-3 flex-wrap">
+                        <button class="btn btn-back" onclick="prevStep(8)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
+                        <button class="btn btn-action" id="checkBtn9" onclick="checkStep(9)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next9" onclick="nextStep(10)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
+                <div class="solution-box" id="solution9">
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>Agua (401.02 kmol/h): 1) Líquido 25->100°C: $401.02 \times 5.65 = 2265.76$ MJ/h</p>
+                    <p>2) Vaporización: $401.02 \times 40.65 = 16301.46$ MJ/h</p>
+                    <p>3) Vapor 100->180°C: $401.02 \times 2.69 = 1078.74$ MJ/h</p>
+                    <p>$$Q_{H2O} = 2265.76 + 16301.46 + 1078.74 = 19645.96 \text{ MJ/h}$$</p>
+                    <p>$$Q_{humos} = (272 \times 6.9) + (89.6 \times 4.8) + (2022.4 \times 4.7) + 19645.96 = \mathbf{31,458.12 \text{ MJ/h}}$$</p>
+                </div>
+            </div>
+
+            <!-- PASO 10: Calor de Reacción y Balance -->
+            <div class="step-container" id="step10">
+                <div class="info-card">
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 10 de 12</span>
+                    <h4><i class="fas fa-bolt me-2"></i>Calor de Reacción (PCI) y Balance Global</h4>
+                </div>
+                <div class="info-card" style="border-left-color: var(--secondary-color);">
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i>Validación</h5>
+                    <div class="mb-4">
+                        <p class="mb-2">1. Si usáramos el Poder Calorífico Superior (PCS) en lugar del PCI, ¿qué error cometeríamos?</p>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q10_1" value="opt1"> Sobreestimaríamos el calor útil, porque el PCS asume que el agua se condensa, lo cual NO sucede en la chimenea a 180°C.</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q10_1" value="opt2"> Subestimaríamos el calor liberado, porque el PCS es un valor menor.</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q10_1" value="opt3"> No habría error, son intercambiables en combustión gaseosa.</label>
+                    </div>
+                    <div id="feedback10" class="feedback-msg"></div>
+                    <div class="d-flex gap-3 mt-3 flex-wrap">
+                        <button class="btn btn-back" onclick="prevStep(9)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
+                        <button class="btn btn-action" id="checkBtn10" onclick="checkStep(10)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next10" onclick="nextStep(11)" style="background: linear-gradient(135deg, #00cc66, #009955);">Ir a Teoría <i class="fas fa-book ms-2"></i></button>
+                    </div>
+                </div>
+                <div class="solution-box" id="solution10">
+                    <h5><i class="fas fa-calculator me-2 text-success"></i>Solución</h5>
+                    <p>$$\Delta Hc_{PCI, C3H8} = -2220 + (4 \times 40.65) = -2057.4 \text{ kJ/mol}$$</p>
+                    <p>$$\Delta Hc_{PCI, C4H10} = -2877 + (5 \times 40.65) = -2673.75 \text{ kJ/mol}$$</p>
+                    <p>$$Q_{rxn} = (48 \times -2057.4) + (32 \times -2673.75) = -184,315.2 \text{ MJ/h}$$</p>
+                    <p>$$Q_{transferido} = Q_{rxn} - Q_{humos} = -184,315.2 - 31,458.12 = \mathbf{-215,773.32 \text{ MJ/h}}$$</p>
+                </div>
+            </div>
+
+            <!-- PASO 11: Teoría (Clases) -->
+            <div class="step-container" id="step11">
+                <div class="info-card">
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 11 de 12</span>
+                    <h4><i class="fas fa-chalkboard-teacher me-2"></i>Preguntas de Teoría (Clases) - 2 ptos</h4>
+                </div>
+                <div class="info-card" style="border-left-color: var(--secondary-color);">
+                    <div class="mb-4">
+                        <p class="mb-2"><strong>1.</strong> En el análisis de gases de combustión, ¿por qué el Nitrógeno (N₂) se considera un componente "inerte" pero sigue siendo crucial para el balance de energía?</p>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q11_1" value="opt1"> Porque reacciona formando NOx a cualquier temperatura, liberando calor extra.</label>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q11_1" value="opt2"> Porque no participa en la reacción química, pero absorbe una gran cantidad de calor sensible al elevar su temperatura desde 25°C hasta la de los humos, reduciendo la eficiencia.</label>
+                    </div>
+                    <div class="mb-4">
+                        <p class="mb-2"><strong>2.</strong> ¿Qué representa físicamente el "exceso de aire" en un proceso de combustión industrial?</p>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q11_2" value="opt1"> El aire adicional suministrado por encima del teórico para garantizar la combustión completa, compensando imperfecciones en la mezcla.</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q11_2" value="opt2"> El aire que se filtra por fugas en la cámara de combustión de manera no controlada.</label>
+                    </div>
+                    <div id="feedback11" class="feedback-msg"></div>
+                    <div class="d-flex gap-3 mt-3 flex-wrap">
+                        <button class="btn btn-back" onclick="prevStep(10)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
+                        <button class="btn btn-action" id="checkBtn11" onclick="checkStepTheory(11)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
+                        <button class="btn btn-action d-none" id="next11" onclick="nextStep(12)" style="background: linear-gradient(135deg, #00cc66, #009955);">Siguiente <i class="fas fa-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
+                <div class="solution-box" id="solution11">
+                    <h5><i class="fas fa-lightbulb me-2 text-success"></i>Retroalimentación Teórica</h5>
+                    <p><strong>1.</strong> El N₂ no se oxida en condiciones normales de caldera, pero constituye ~80% del flujo másico. Calentar esta gran masa de 25°C a 180°C consume energía que podría usarse para generar vapor, actuando como un "sumidero" de calor.</p>
+                    <p><strong>2.</strong> El exceso de aire es intencional y controlado. Demasiado poco causa combustión incompleta (CO, hollín). Demasiado exceso enfría la llama y arrastra calor útil por la chimenea, bajando la eficiencia.</p>
+                </div>
+            </div>
+
+            <!-- PASO 12: Teoría (Sostenibilidad) -->
+            <div class="step-container" id="step12">
+                <div class="info-card">
+                    <span class="badge bg-primary mb-2"><i class="fas fa-info-circle me-1"></i> Paso 12 de 12</span>
+                    <h4><i class="fas fa-leaf me-2"></i>Preguntas de Teoría (Sostenibilidad) - 2 ptos</h4>
+                </div>
+                <div class="info-card" style="border-left-color: var(--secondary-color);">
+                    <div class="mb-4">
+                        <p class="mb-2"><strong>3.</strong> Desde una perspectiva de sostenibilidad, ¿cuál es el principal impacto ambiental de los gases de combustión calculados y una estrategia de mitigación?</p>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q12_1" value="opt1"> El N₂ causa lluvia ácida; se mitiga usando filtros de mangas.</label>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q12_1" value="opt2"> El CO₂ es un gas de efecto invernadero; se mitiga optimizando la eficiencia para quemar menos combustible o implementando tecnologías de captura de carbono (CCUS).</label>
+                    </div>
+                    <div class="mb-4">
+                        <p class="mb-2"><strong>4.</strong> Los humos salen a 180 °C, lo que representa una gran pérdida de energía. ¿Qué dispositivo de sostenibilidad energética se puede instalar para recuperar este calor?</p>
+                        <label class="quiz-option" data-correct="true"><input type="radio" name="q12_2" value="opt1"> Un economizador o precalentador de aire, que usa el calor residual de los humos para calentar el agua de alimentación o el aire de combustión antes de entrar al horno.</label>
+                        <label class="quiz-option" data-correct="false"><input type="radio" name="q12_2" value="opt2"> Un ciclo de refrigeración por absorción para enfriar los humos más rápido.</label>
+                    </div>
+                    <div id="feedback12" class="feedback-msg"></div>
+                    <div class="d-flex gap-3 mt-3 flex-wrap">
+                        <button class="btn btn-back" onclick="prevStep(11)"><i class="fas fa-arrow-left me-2"></i>Regresar</button>
+                        <button class="btn btn-action" id="checkBtn12" onclick="checkStepTheory(12)"><i class="fas fa-check-circle me-2"></i>Verificar</button>
                         <button class="btn btn-action d-none" id="finishBtn" onclick="finishLab()" style="background: linear-gradient(135deg, #00cc66, #009955);">Finalizar Estudio <i class="fas fa-flag-checkered ms-2"></i></button>
                     </div>
                 </div>
-
-                <div class="solution-box" id="solution6">
-                    <h5><i class="fas fa-trophy me-2 text-warning"></i>¡Solución Completa!</h5>
-                    <p><strong>1. Ajuste a PCI (Agua como vapor):</strong></p>
-                    <p>$$ \Delta Hc_{PCI, C3H8} = -2220 + (4 \times 40.65) = -2057.4 \text{ kJ/mol} $$</p>
-                    <p>$$ \Delta Hc_{PCI, C4H10} = -2877 + (5 \times 40.65) = -2673.75 \text{ kJ/mol} $$</p>
-                    
-                    <p><strong>2. Calor de Reacción:</strong></p>
-                    $$ Q_{rxn} = (48 \times -2057.4) + (32 \times -2673.75) = \mathbf{-184,315.2 \text{ MJ/h}} $$
-                    
-                    <p><strong>3. Balance de Energía Global:</strong></p>
-                    <p>$$ Q_{transferido} = Q_{rxn} - Q_{humos} $$</p>
-                    <p>$$ Q_{transferido} = -184,315.2 - 31,458.12 = \mathbf{-215,773.32 \text{ MJ/h}} $$</p>
-                    
-                    <div class="engineering-note">
-                        <i class="fas fa-check-double me-2"></i><strong>Interpretación:</strong> El sistema libera 215.8 GJ/h. El signo negativo indica que el calor <em>sale</em> del sistema de reacción para ser aprovechado por la caldera. La diferencia entre usar PCI y PCS aquí es de más de 16 GJ/h, un error inaceptable en el diseño industrial.
-                    </div>
+                <div class="solution-box" id="solution12">
+                    <h5><i class="fas fa-trophy me-2 text-warning"></i>¡Estudio Completado!</h5>
+                    <p><strong>3.</strong> El CO₂ es el principal producto de la combustión de hidrocarburos. La ingeniería sostenible busca minimizar su generación por unidad de producto (eficiencia) o capturarlo.</p>
+                    <p><strong>4.</strong> El economizador es la solución estándar en la industria. Al precalentar el aire de combustión con los gases de salida, se reduce el combustible necesario para alcanzar la temperatura de operación, mejorando la eficiencia global del sistema.</p>
+                    <p class="mt-3 text-success"><em>¡Has dominado los balances de materia, energía y los conceptos teóricos clave para el Examen Nº 2!</em></p>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row align-items-center">
@@ -557,13 +527,13 @@
                     <img src="assets/images/logo.png" alt="Logo" height="50" class="footer-logo mb-2" onerror="this.src='https://via.placeholder.com/50x50/ff6600/ffffff?text=LOGO'">
                     <p class="text-white mb-0">
                         Herramientas para el estudio de procesos industriales.<br>
-                        <small>Preparación Examen 2026-2</small>
+                        <small>Facultad de Ingeniería - Sección 603 (2026-2)</small>
                     </p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <p class="text-white mb-0">
                         <i class="fas fa-university me-2"></i>Procesos Industriales<br>
-                        <small>Tema: Combustión de Mezclas Gaseosas</small>
+                        <small>Examen Escrito Nº 2</small>
                     </p>
                 </div>
             </div>
@@ -574,12 +544,9 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JavaScript -->
     <script>
-        // 1. Barajar opciones aleatoriamente (Fisher-Yates)
+        // Barajar opciones aleatoriamente (Fisher-Yates)
         function shuffleOptions(questionName) {
             const container = document.querySelector(`input[name="${questionName}"]`)?.closest('div.mb-4');
             if (!container) return;
@@ -591,9 +558,15 @@
             options.forEach(opt => container.appendChild(opt));
         }
 
-        // Barajar al cargar
-        for (let s = 1; s <= 6; s++) {
-            shuffleOptions(`q${s}_1`);
+        // Barajar al cargar para todos los pasos
+        for (let s = 1; s <= 12; s++) {
+            // Manejar pasos con múltiples preguntas (11 y 12)
+            if (s === 11 || s === 12) {
+                shuffleOptions(`q${s}_1`);
+                shuffleOptions(`q${s}_2`);
+            } else {
+                shuffleOptions(`q${s}_1`);
+            }
         }
 
         // Highlight visual al seleccionar
@@ -608,37 +581,58 @@
             });
         });
 
-        // 2. Verificación estricta
+        // Verificación para pasos de cálculo (1 respuesta)
         function checkStep(stepNum) {
             let feedbackEl = document.getElementById(`feedback${stepNum}`);
             let checkBtn = document.getElementById(`checkBtn${stepNum}`);
-            let nextBtn = document.getElementById(stepNum === 6 ? 'finishBtn' : `next${stepNum}`);
+            let nextBtn = document.getElementById(`next${stepNum}`);
             let solutionBox = document.getElementById(`solution${stepNum}`);
 
             const selected = document.querySelector(`input[name="q${stepNum}_1"]:checked`);
-            let allCorrect = false;
-
-            if (selected) {
-                allCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
-            }
+            let allCorrect = selected ? selected.closest('.quiz-option').dataset.correct === 'true' : false;
 
             if (allCorrect) {
                 feedbackEl.className = 'feedback-msg success';
-                feedbackEl.innerHTML = '<i class="fas fa-check-circle me-2"></i>¡Correcto! Has demostrado comprensión del concepto.';
+                feedbackEl.innerHTML = '<i class="fas fa-check-circle me-2"></i>¡Correcto! Avanzando al siguiente paso.';
                 feedbackEl.style.display = 'block';
-                
                 solutionBox.classList.add('show');
                 nextBtn.classList.remove('d-none');
                 checkBtn.disabled = true;
                 checkBtn.innerHTML = '<i class="fas fa-check me-2"></i>Verificado';
-                
-                // Re-render MathJax
-                if (window.MathJax) {
-                    MathJax.typesetPromise([solutionBox]);
-                }
+                if (window.MathJax) MathJax.typesetPromise([solutionBox]);
             } else {
                 feedbackEl.className = 'feedback-msg error';
-                feedbackEl.innerHTML = '<i class="fas fa-times-circle me-2"></i>Respuesta incorrecta. Revisa la información, selecciona otra opción y vuelve a verificar. No puedes avanzar hasta acertar.';
+                feedbackEl.innerHTML = '<i class="fas fa-times-circle me-2"></i>Incorrecto. Revisa la teoría del paso y vuelve a intentar.';
+                feedbackEl.style.display = 'block';
+                solutionBox.classList.remove('show');
+                nextBtn.classList.add('d-none');
+            }
+        }
+
+        // Verificación para pasos de teoría (2 respuestas requeridas)
+        function checkStepTheory(stepNum) {
+            let feedbackEl = document.getElementById(`feedback${stepNum}`);
+            let checkBtn = document.getElementById(`checkBtn${stepNum}`);
+            let nextBtn = document.getElementById(stepNum === 12 ? 'finishBtn' : `next${stepNum}`);
+            let solutionBox = document.getElementById(`solution${stepNum}`);
+
+            const sel1 = document.querySelector(`input[name="q${stepNum}_1"]:checked`);
+            const sel2 = document.querySelector(`input[name="q${stepNum}_2"]:checked`);
+            
+            let correct1 = sel1 ? sel1.closest('.quiz-option').dataset.correct === 'true' : false;
+            let correct2 = sel2 ? sel2.closest('.quiz-option').dataset.correct === 'true' : false;
+
+            if (correct1 && correct2) {
+                feedbackEl.className = 'feedback-msg success';
+                feedbackEl.innerHTML = '<i class="fas fa-check-circle me-2"></i>¡Excelente! Dominas los conceptos teóricos.';
+                feedbackEl.style.display = 'block';
+                solutionBox.classList.add('show');
+                nextBtn.classList.remove('d-none');
+                checkBtn.disabled = true;
+                checkBtn.innerHTML = '<i class="fas fa-check me-2"></i>Verificado';
+            } else {
+                feedbackEl.className = 'feedback-msg error';
+                feedbackEl.innerHTML = '<i class="fas fa-times-circle me-2"></i>Alguna respuesta es incorrecta. Ambas deben ser correctas para avanzar.';
                 feedbackEl.style.display = 'block';
                 solutionBox.classList.remove('show');
                 nextBtn.classList.add('d-none');
@@ -648,8 +642,7 @@
         function nextStep(nextStepNum) {
             document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
             document.getElementById(`step${nextStepNum}`).classList.add('active');
-            
-            const progress = (nextStepNum / 6) * 100;
+            const progress = (nextStepNum / 12) * 100;
             document.getElementById('progressBar').style.width = `${progress}%`;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -657,8 +650,7 @@
         function prevStep(prevStepNum) {
             document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
             document.getElementById(`step${prevStepNum}`).classList.add('active');
-            
-            const progress = (prevStepNum / 6) * 100;
+            const progress = (prevStepNum / 12) * 100;
             document.getElementById('progressBar').style.width = `${progress}%`;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -669,16 +661,16 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content" style="background: #1a1a2e; border: 1px solid var(--accent-green); color: #fff;">
                             <div class="modal-header border-bottom-0">
-                                <h5 class="modal-title" style="color: var(--accent-green);"><i class="fas fa-award me-2"></i>¡Estudio Completado!</h5>
+                                <h5 class="modal-title" style="color: var(--accent-green);"><i class="fas fa-award me-2"></i>¡Preparación Completada!</h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center">
                                 <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
-                                <p>Has dominado los balances de materia y energía para la combustión de mezclas de hidrocarburos.</p>
-                                <p class="text-white">¡Estás listo para el examen!</p>
+                                <p>Has completado exitosamente los 12 pasos del balance de materia, energía y teoría para la Combustión de GLP.</p>
+                                <p class="text-white">¡Estás listo para el Examen Escrito Nº 2 de la Sección 603!</p>
                             </div>
                             <div class="modal-footer border-top-0 justify-content-center">
-                                <button type="button" class="btn btn-action" data-bs-dismiss="modal">
+                                <button type="button" class="btn btn-action" data-bs-dismiss="modal" onclick="location.reload()">
                                     <i class="fas fa-redo me-2"></i>Repasar de nuevo
                                 </button>
                             </div>
